@@ -427,7 +427,7 @@ export default function Home() {
       {/* ========== ABOUT SECTION ========== */}
       <section id="sobre" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} transition-colors`}>
         <div className="container">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-start md:items-center">
             <div 
               id="sobre-text"
               data-animate
@@ -461,16 +461,16 @@ export default function Home() {
             <div 
               id="sobre-image"
               data-animate
-              className={`transform ${
+              className={`transform flex flex-col items-center md:items-start ${
                 isVisible['sobre-image'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
               } duration-700 ease-out`}
             >
               <img 
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028858232/4qqDDmhxZ4hQffQuMCJG7z/perfil-dc_7e9d9f8a.png" 
                 alt="Daniel Carvalho" 
-                className="rounded-lg shadow-lg"
+                className="w-40 h-40 md:w-full md:h-auto rounded-lg shadow-lg object-cover"
               />
-              <div className="mt-6 p-4 bg-yellow-400 text-black rounded-lg">
+              <div className="mt-4 md:mt-6 p-4 bg-yellow-400 text-black rounded-lg w-full">
                 <p className="text-sm">Fundador da DCS Mídia. Especialista em estratégia de narrativa e comunicação política. 10+ anos de experiência em campanhas e mandatos.</p>
               </div>
             </div>
