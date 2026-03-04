@@ -30,7 +30,6 @@ export default function Home() {
             <a href="#sobre" className="text-sm font-medium text-gray-700 hover:text-black transition">Sobre</a>
             <a href="#servicos" className="text-sm font-medium text-gray-700 hover:text-black transition">Serviços</a>
             <a href="#metodo" className="text-sm font-medium text-gray-700 hover:text-black transition">Método</a>
-            <a href="#cases" className="text-sm font-medium text-gray-700 hover:text-black transition">Cases</a>
           </nav>
           <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
             <MessageCircle className="w-4 h-4 mr-2" />
@@ -301,62 +300,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== CASES SECTION ========== */}
-      <section id="cases" className="py-20 md:py-28 bg-gray-50">
-        <div className="container">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16">Cases de sucesso</h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Campanha Municipal",
-                challenge: "Candidato desconhecido, sem presença digital, discurso fraco",
-                strategy: "Narrativa focada em soluções locais, conteúdo diário de bastidor, pauta clara",
-                result: "Crescimento de 300% em seguidores, 50k impressões/mês, autoridade consolidada"
-              },
-              {
-                title: "Mandato Estadual",
-                challenge: "Narrativa confusa, baixo engajamento, comunicação burocrática",
-                strategy: "Realinhamento de mensagem, calendário estratégico, linguagem clara",
-                result: "Engajamento +250%, autoridade percebida, povo sabe o que faz"
-              },
-              {
-                title: "Pré-candidatura Federal",
-                challenge: "Construir presença do zero em 6 meses, discurso indefinido",
-                strategy: "Estratégia de narrativa clara + conteúdo de bastidor + pauta forte",
-                result: "100k seguidores, presença em mídia nacional, discurso claro"
-              },
-              {
-                title: "Gestão Pública",
-                challenge: "Comunicar ações sem parecer propaganda, linguagem burocrática",
-                strategy: "Conteúdo de mandato com narrativa clara, linguagem acessível",
-                result: "Aprovação +40%, base mobilizada, povo entende ações"
-              }
-            ].map((caseItem, i) => (
-              <div key={i} className="bg-white p-8 rounded-lg border border-gray-200 hover:border-yellow-400 hover:shadow-lg transition">
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="text-2xl font-bold">{caseItem.title}</h3>
-                  <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold">✓</div>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm font-semibold text-gray-600 mb-1">Desafio</p>
-                    <p className="text-gray-700">{caseItem.challenge}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-gray-600 mb-1">Estratégia</p>
-                    <p className="text-gray-700">{caseItem.strategy}</p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-yellow-600 mb-1">Resultado</p>
-                    <p className="text-gray-700 font-semibold">{caseItem.result}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ========== ABOUT SECTION ========== */}
       <section id="sobre" className="py-20 md:py-28 bg-white">
@@ -365,23 +309,23 @@ export default function Home() {
             <div>
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Quem somos</h2>
               <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-                DCS Mídia é uma agência especializada em marketing político e comunicação estratégica. Nascemos da frustração de ver políticos com trabalho excelente desaparecerem na invisibilidade digital.
+                <strong>Daniel Carvalho</strong> é consultor de marketing político e eleitoral, fundador da DCS Mídia. Atua há 10 anos no mercado de marketing, desenvolvendo estratégias e liderando projetos em campanhas municipais e estaduais, além de trabalhos contínuos com mandatos de vereador, deputado estadual e federal.
               </p>
               <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-                Transformamos comunicação política em estratégia: discurso claro, pauta certa, constância e autoridade percebida. Não fazemos post por post. Construímos narrativa.
+                Seu foco está em comunicação digital, redes sociais e produção de conteúdo, sempre estruturando presença, narrativa e relação com o eleitor. Carrega experiência em marketing esportivo e jornalismo, o que amplia sua capacidade de entender público, construir marca e organizar comunicação de forma estratégica.
               </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Defendemos comunicação com estratégia, presença e narrativa. Combatemos invisibilidade, burocracia e agências que só entregam arte. Prometemos futuro onde seu candidato ou mandato é referência.
+                Na DCS Mídia, segue a filosofia do marketing pragmático e direto ao ponto: nada de fórmulas mágicas ou promessas vazias. Entrega o que é necessário para ampliar presença digital e construir imagem sólida. Atua com estratégia, clareza e foco em resultado, combinando conteúdo relevante com performance real.
               </p>
               <div className="space-y-3">
                 <p className="flex items-center gap-3 text-gray-700">
+                  <span className="text-yellow-400 font-bold">✓</span> 10+ anos de experiência em marketing político
+                </p>
+                <p className="flex items-center gap-3 text-gray-700">
+                  <span className="text-yellow-400 font-bold">✓</span> Especialista em estratégia de narrativa e comunicação digital
+                </p>
+                <p className="flex items-center gap-3 text-gray-700">
                   <span className="text-yellow-400 font-bold">✓</span> Experiência em campanhas municipais, estaduais e federais
-                </p>
-                <p className="flex items-center gap-3 text-gray-700">
-                  <span className="text-yellow-400 font-bold">✓</span> Equipe especializada em narrativa e estratégia
-                </p>
-                <p className="flex items-center gap-3 text-gray-700">
-                  <span className="text-yellow-400 font-bold">✓</span> Metodologia comprovada em múltiplos contextos
                 </p>
               </div>
             </div>
@@ -452,8 +396,8 @@ export default function Home() {
               <p className="font-bold text-white mb-4">Empresa</p>
               <ul className="text-sm space-y-2">
                 <li><a href="#sobre" className="hover:text-white transition">Sobre</a></li>
-                <li><a href="#cases" className="hover:text-white transition">Cases</a></li>
                 <li><a href="#metodo" className="hover:text-white transition">Método</a></li>
+                <li><a href="#servicos" className="hover:text-white transition">Serviços</a></li>
               </ul>
             </div>
             <div>
