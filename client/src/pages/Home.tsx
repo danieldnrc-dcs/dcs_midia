@@ -15,9 +15,12 @@ import {
   PenTool,
   Smartphone,
   Activity,
-  Eye
+  Eye,
+  Moon,
+  Sun
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 /**
  * DCS Mídia - Home Page
@@ -61,11 +64,12 @@ const useScrollAnimation = () => {
 
 export default function Home() {
   const isVisible = useScrollAnimation();
+  const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-white text-black'}`}>
       {/* ========== HEADER ========== */}
-      <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
+      <header className={`sticky top-0 z-50 ${theme === 'dark' ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-b transition-colors`}>
         <div className="container flex items-center justify-between py-4">
           <div className="flex items-center gap-2">
             <img 
@@ -75,14 +79,31 @@ export default function Home() {
             />
           </div>
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#sobre" className="text-sm font-medium text-gray-700 hover:text-black transition">Sobre</a>
-            <a href="#servicos" className="text-sm font-medium text-gray-700 hover:text-black transition">Serviços</a>
-            <a href="#metodo" className="text-sm font-medium text-gray-700 hover:text-black transition">Método</a>
+            <a href="#sobre" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Sobre</a>
+            <a href="#servicos" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Serviços</a>
+            <a href="#metodo" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Método</a>
           </nav>
-          <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
-            <MessageCircle className="w-4 h-4 mr-2" />
-            WhatsApp
-          </Button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg transition-colors ${
+                theme === 'dark'
+                  ? 'bg-gray-800 hover:bg-gray-700 text-yellow-400'
+                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
+              }`}
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-5 h-5" strokeWidth={1.5} />
+              ) : (
+                <Moon className="w-5 h-5" strokeWidth={1.5} />
+              )}
+            </button>
+            <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
+              <MessageCircle className="w-4 h-4 mr-2" />
+              WhatsApp
+            </Button>
+          </div>
         </div>
       </header>
 
@@ -120,13 +141,13 @@ export default function Home() {
       </section>
 
       {/* ========== BANDEIRA SECTION ========== */}
-      <section className="py-20 md:py-28 bg-gray-50 relative">
+      <section className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'} relative transition-colors`}>
         <div className="absolute left-0 top-0 w-1 h-32 bg-yellow-400"></div>
         
         <div className="container">
           <div className="max-w-3xl mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">O que a gente defende</h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
               Comunicação com estratégia, presença e narrativa. Não é post por post. Não é só arte bonita. É discurso claro, pauta certa, constância e autoridade.
             </p>
           </div>
@@ -155,15 +176,15 @@ export default function Home() {
                   key={i} 
                   id={`bandeira-${i}`}
                   data-animate
-                  className={`bg-white p-8 rounded-lg border border-gray-200 hover:border-yellow-400 transition transform ${
+                  className={`${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} p-8 rounded-lg border hover:border-yellow-400 transition transform ${
                     isVisible[`bandeira-${i}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   } duration-700 ease-out`}
                 >
-                  <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-4">
+                  <div className={`w-12 h-12 ${theme === 'dark' ? 'bg-gray-700' : 'bg-black'} rounded-lg flex items-center justify-center mb-4 transition-colors`}>
                     <Icon className="w-6 h-6 text-yellow-400" strokeWidth={1.5} />
                   </div>
                   <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                  <p className="text-gray-600">{item.desc}</p>
+                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>{item.desc}</p>
                 </div>
               );
             })}
@@ -172,13 +193,13 @@ export default function Home() {
       </section>
 
       {/* ========== INIMIGO SECTION ========== */}
-      <section className="py-20 md:py-28 bg-black text-white relative overflow-hidden">
+      <section className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-950' : 'bg-black'} text-white relative overflow-hidden transition-colors`}>
         <div className="absolute right-0 top-1/2 w-96 h-96 bg-yellow-400/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
         
         <div className="container relative z-10">
           <div className="max-w-3xl mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">O que a gente combate</h2>
-            <p className="text-xl text-gray-300">
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>
               Político invisível. Comunicação burocrática. Post por post sem estratégia. Agência que só entrega arte e some. Isso não funciona.
             </p>
           </div>
@@ -208,7 +229,7 @@ export default function Home() {
                     </div>
                     <div>
                       <h3 className="text-lg font-bold mb-1">{item.title}</h3>
-                      <p className="text-gray-300 text-sm">{item.desc}</p>
+                      <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>{item.desc}</p>
                     </div>
                   </div>
                 );
@@ -218,12 +239,12 @@ export default function Home() {
             <div 
               id="inimigo-box"
               data-animate
-              className={`bg-gray-900 p-8 rounded-lg border border-yellow-400/30 transform ${
+              className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-900'} p-8 rounded-lg border border-yellow-400/30 transform transition-colors ${
                 isVisible['inimigo-box'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
               } duration-700 ease-out`}
             >
               <h3 className="text-2xl font-bold mb-6 text-yellow-400">A gente faz diferente</h3>
-              <ul className="space-y-4 text-gray-300">
+              <ul className={`space-y-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>
                 <li className="flex gap-3">
                   <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
                   <span>Estratégia antes de tudo. Narrativa clara. Propósito em cada ação.</span>
@@ -251,11 +272,11 @@ export default function Home() {
       </section>
 
       {/* ========== PROMESSA SECTION ========== */}
-      <section className="py-20 md:py-28 bg-white">
+      <section className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} transition-colors`}>
         <div className="container">
           <div className="max-w-3xl mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">O futuro que a gente constrói</h2>
-            <p className="text-xl text-gray-700 leading-relaxed">
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
               Campanha ou mandato com discurso claro. Pauta certa. Constância em todos os canais. Percepção de autoridade. Povo sabe quem você é, o que você faz e por que você é necessário.
             </p>
           </div>
@@ -280,7 +301,7 @@ export default function Home() {
                   style={{ transitionDelay: `${i * 50}ms` }}
                 >
                   <CheckCircle2 className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" strokeWidth={1.5} />
-                  <p className="text-lg text-gray-700">{item}</p>
+                  <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{item}</p>
                 </div>
               ))}
             </div>
@@ -288,7 +309,7 @@ export default function Home() {
             <div 
               id="promessa-box"
               data-animate
-              className={`bg-gray-50 p-8 rounded-lg border border-gray-200 transform ${
+              className={`${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'} p-8 rounded-lg border transform transition-colors ${
                 isVisible['promessa-box'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
               } duration-700 ease-out`}
             >
@@ -296,19 +317,19 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="border-l-4 border-yellow-400 pl-4">
                   <p className="font-bold text-lg mb-1">Discurso Claro</p>
-                  <p className="text-gray-600">Povo entende exatamente o que você defende e por que você é necessário.</p>
+                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Povo entende exatamente o que você defende e por que você é necessário.</p>
                 </div>
                 <div className="border-l-4 border-yellow-400 pl-4">
                   <p className="font-bold text-lg mb-1">Pauta Certa</p>
-                  <p className="text-gray-600">Cada conteúdo reforça sua narrativa. Nada é aleatório.</p>
+                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Cada conteúdo reforça sua narrativa. Nada é aleatório.</p>
                 </div>
                 <div className="border-l-4 border-yellow-400 pl-4">
                   <p className="font-bold text-lg mb-1">Constância</p>
-                  <p className="text-gray-600">Presença diária em múltiplas plataformas. Você não desaparece.</p>
+                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Presença diária em múltiplas plataformas. Você não desaparece.</p>
                 </div>
                 <div className="border-l-4 border-yellow-400 pl-4">
                   <p className="font-bold text-lg mb-1">Autoridade Percebida</p>
-                  <p className="text-gray-600">Povo vê você como referência. Confia em você. Vota em você.</p>
+                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Povo vê você como referência. Confia em você. Vota em você.</p>
                 </div>
               </div>
             </div>
@@ -317,7 +338,7 @@ export default function Home() {
       </section>
 
       {/* ========== SERVICES SECTION ========== */}
-      <section id="servicos" className="py-20 md:py-28 bg-gray-50">
+      <section id="servicos" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'} transition-colors`}>
         <div className="container">
           <h2 className="text-4xl md:text-5xl font-bold mb-16">Nossos serviços</h2>
 
@@ -338,16 +359,16 @@ export default function Home() {
                   key={i}
                   id={`servico-${i}`}
                   data-animate
-                  className={`bg-white p-6 rounded-lg border border-gray-200 hover:border-yellow-400 hover:shadow-lg transition group cursor-pointer transform ${
+                  className={`${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} p-6 rounded-lg border hover:border-yellow-400 hover:shadow-lg transition group cursor-pointer transform ${
                     isVisible[`servico-${i}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   } duration-700 ease-out`}
                   style={{ transitionDelay: `${i * 30}ms` }}
                 >
-                  <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center mb-4 group-hover:bg-yellow-400 transition">
-                    <Icon className="w-5 h-5 text-yellow-400 group-hover:text-black transition" strokeWidth={1.5} />
+                  <div className={`w-10 h-10 ${theme === 'dark' ? 'bg-gray-700 group-hover:bg-yellow-400' : 'bg-black group-hover:bg-yellow-400'} rounded-lg flex items-center justify-center mb-4 transition`}>
+                    <Icon className={`w-5 h-5 text-yellow-400 ${theme === 'dark' ? 'group-hover:text-gray-900' : 'group-hover:text-black'} transition`} strokeWidth={1.5} />
                   </div>
                   <h3 className="font-bold text-lg mb-2">{service.title}</h3>
-                  <p className="text-sm text-gray-600">{service.desc}</p>
+                  <p className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}>{service.desc}</p>
                 </div>
               );
             })}
@@ -356,7 +377,7 @@ export default function Home() {
       </section>
 
       {/* ========== PROCESS SECTION ========== */}
-      <section id="metodo" className="py-20 md:py-28 bg-white relative">
+      <section id="metodo" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} relative transition-colors`}>
         <div className="absolute left-0 bottom-0 w-1 h-32 bg-yellow-400"></div>
         
         <div className="container">
@@ -380,11 +401,11 @@ export default function Home() {
                 } duration-700 ease-out`}
                 style={{ transitionDelay: `${i * 50}ms` }}
               >
-                <div className="bg-black text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl mb-4">
+                <div className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-black'} text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl mb-4 transition-colors`}>
                   {step.num}
                 </div>
                 <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className="text-gray-600">{step.desc}</p>
+                <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>{step.desc}</p>
                 {i < 5 && <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-yellow-400"></div>}
               </div>
             ))}
@@ -405,7 +426,7 @@ export default function Home() {
       </section>
 
       {/* ========== ABOUT SECTION ========== */}
-      <section id="sobre" className="py-20 md:py-28 bg-white">
+      <section id="sobre" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} transition-colors`}>
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div 
@@ -416,23 +437,23 @@ export default function Home() {
               } duration-700 ease-out`}
             >
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Quem somos</h2>
-              <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+              <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-4 leading-relaxed`}>
                 <strong>Daniel Carvalho</strong> é consultor de marketing político e eleitoral, fundador da DCS Mídia. Atua há 10 anos no mercado de marketing, desenvolvendo estratégias e liderando projetos em campanhas municipais e estaduais, além de trabalhos contínuos com mandatos de vereador, deputado estadual e federal.
               </p>
-              <p className="text-lg text-gray-700 mb-4 leading-relaxed">
+              <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-4 leading-relaxed`}>
                 Seu foco está em comunicação digital, redes sociais e produção de conteúdo, sempre estruturando presença, narrativa e relação com o eleitor. Carrega experiência em marketing esportivo e jornalismo, o que amplia sua capacidade de entender público, construir marca e organizar comunicação de forma estratégica.
               </p>
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+              <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-8 leading-relaxed`}>
                 Na DCS Mídia, segue a filosofia do marketing pragmático e direto ao ponto: nada de fórmulas mágicas ou promessas vazias. Entrega o que é necessário para ampliar presença digital e construir imagem sólida. Atua com estratégia, clareza e foco em resultado, combinando conteúdo relevante com performance real.
               </p>
               <div className="space-y-3">
-                <p className="flex items-center gap-3 text-gray-700">
+                <p className={`flex items-center gap-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                   <span className="text-yellow-400 font-bold">✓</span> 10+ anos de experiência em marketing político
                 </p>
-                <p className="flex items-center gap-3 text-gray-700">
+                <p className={`flex items-center gap-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                   <span className="text-yellow-400 font-bold">✓</span> Especialista em estratégia de narrativa e comunicação digital
                 </p>
-                <p className="flex items-center gap-3 text-gray-700">
+                <p className={`flex items-center gap-3 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>
                   <span className="text-yellow-400 font-bold">✓</span> Experiência em campanhas municipais, estaduais e federais
                 </p>
               </div>
@@ -460,7 +481,7 @@ export default function Home() {
       </section>
 
       {/* ========== CTA FINAL SECTION ========== */}
-      <section className="py-20 md:py-28 bg-black text-white relative overflow-hidden">
+      <section className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-950' : 'bg-black'} text-white relative overflow-hidden transition-colors`}>
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" viewBox="0 0 1200 400" preserveAspectRatio="none">
             <line x1="0" y1="0" x2="1200" y2="400" stroke="white" strokeWidth="2" />
@@ -477,7 +498,7 @@ export default function Home() {
             } duration-700 ease-out`}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Pronto para construir autoridade?</h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+            <p className={`text-xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'} mb-12 max-w-2xl mx-auto`}>
               Agende um diagnóstico gratuito. Vamos entender seu contexto, desafios e oportunidades. Vamos mostrar como transformar sua comunicação em estratégia.
             </p>
 
@@ -499,7 +520,7 @@ export default function Home() {
       </section>
 
       {/* ========== FOOTER ========== */}
-      <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
+      <footer className={`${theme === 'dark' ? 'bg-gray-950 border-gray-800' : 'bg-gray-900 border-gray-800'} text-gray-400 py-12 border-t transition-colors`}>
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
