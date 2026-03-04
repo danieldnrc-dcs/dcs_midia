@@ -50,11 +50,11 @@ export default function Home() {
         
         <div className="container relative z-10">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Comunicação que <span className="text-yellow-400">vence</span>
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{fontFamily: 'Syne, sans-serif'}}>
+              Marketing Político direto ao ponto.
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              A gente não faz post. A gente constrói presença, narrativa e autoridade. Transformamos sua comunicação política em estratégia de guerra de atenção.
+              Comunicação e marketing estratégico para mandatos, projetos políticos e campanhas.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 text-base font-semibold">
