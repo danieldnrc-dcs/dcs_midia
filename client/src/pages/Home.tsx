@@ -99,10 +99,12 @@ export default function Home() {
                 <Moon className="w-5 h-5" strokeWidth={1.5} />
               )}
             </button>
-            <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
-              <MessageCircle className="w-4 h-4 mr-2" />
-              WhatsApp
-            </Button>
+            <a href="https://wa.me/message/SESMAH5FUNJRG1" target="_blank" rel="noopener noreferrer">
+              <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
+                <MessageCircle className="w-4 h-4 mr-2" />
+                WhatsApp
+              </Button>
+            </a>
           </div>
         </div>
       </header>
@@ -125,13 +127,17 @@ export default function Home() {
               Comunicação com estratégia, presença e narrativa. Seu candidato ou mandato com discurso claro, pauta certa e autoridade percebida.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 text-base font-semibold">
-                Agendar Diagnóstico
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black text-base font-semibold">
-                Conhecer Método
-              </Button>
+              <a href="https://wa.me/message/SESMAH5FUNJRG1" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 text-base font-semibold">
+                  Agendar Diagnóstico
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </a>
+              <a href="#metodo">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black text-base font-semibold">
+                  Conhecer Método
+                </Button>
+              </a>
             </div>
           </div>
         </div>
@@ -495,13 +501,17 @@ export default function Home() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 text-base font-semibold">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Chamar no WhatsApp
-              </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black text-base font-semibold">
-                Agendar Diagnóstico
-              </Button>
+              <a href="https://wa.me/message/SESMAH5FUNJRG1" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 text-base font-semibold">
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Chamar no WhatsApp
+                </Button>
+              </a>
+              <a href="https://wa.me/message/SESMAH5FUNJRG1" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black text-base font-semibold">
+                  Agendar Diagnóstico
+                </Button>
+              </a>
             </div>
 
             <p className="text-gray-400 mt-8">
