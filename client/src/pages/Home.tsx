@@ -1,5 +1,23 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
+import { 
+  ArrowRight, 
+  MessageCircle, 
+  CheckCircle2,
+  Target,
+  Radio,
+  MessageSquare,
+  AlertCircle,
+  TrendingUp,
+  Users,
+  Zap,
+  BarChart3,
+  Share2,
+  PenTool,
+  Smartphone,
+  Activity,
+  Eye
+} from "lucide-react";
+import { useEffect, useState } from "react";
 
 /**
  * DCS Mídia - Home Page
@@ -13,7 +31,37 @@ import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
  * Promessa: Campanha/mandato com discurso claro, pauta certa, constância, e percepção de autoridade.
  */
 
+// Scroll animation hook
+const useScrollAnimation = () => {
+  const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prev) => ({
+              ...prev,
+              [entry.target.id]: true,
+            }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll("[data-animate]");
+    elements.forEach((el) => observer.observe(el));
+
+    return () => elements.forEach((el) => observer.unobserve(el));
+  }, []);
+
+  return isVisible as Record<string, boolean>;
+};
+
 export default function Home() {
+  const isVisible = useScrollAnimation();
+
   return (
     <div className="min-h-screen bg-white">
       {/* ========== HEADER ========== */}
@@ -86,27 +134,39 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               { 
-                icon: "🎯", 
+                icon: Target,
                 title: "Estratégia", 
                 desc: "Cada ação tem propósito. Cada post reforça narrativa. Cada conteúdo constrói autoridade." 
               },
               { 
-                icon: "📱", 
+                icon: Radio,
                 title: "Presença", 
                 desc: "Constância em múltiplas plataformas. Seu candidato/mandato sempre visível, sempre relevante." 
               },
               { 
-                icon: "💬", 
+                icon: MessageSquare,
                 title: "Narrativa", 
                 desc: "Discurso claro que o povo entende. Pauta que conecta. Mensagem que fica." 
               }
-            ].map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-lg border border-gray-200 hover:border-yellow-400 transition">
-                <div className="text-4xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-gray-600">{item.desc}</p>
-              </div>
-            ))}
+            ].map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div 
+                  key={i} 
+                  id={`bandeira-${i}`}
+                  data-animate
+                  className={`bg-white p-8 rounded-lg border border-gray-200 hover:border-yellow-400 transition transform ${
+                    isVisible[`bandeira-${i}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  } duration-700 ease-out`}
+                >
+                  <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center mb-4">
+                    <Icon className="w-6 h-6 text-yellow-400" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{item.title}</h3>
+                  <p className="text-gray-600">{item.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -125,60 +185,63 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
-              <div className="flex gap-4">
-                <div className="text-yellow-400 font-bold text-2xl flex-shrink-0">✗</div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Invisibilidade</h3>
-                  <p className="text-gray-300">Trabalho excelente que ninguém vê. Presença fraca. Povo não sabe o que você faz.</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="text-yellow-400 font-bold text-2xl flex-shrink-0">✗</div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Comunicação Burocrática</h3>
-                  <p className="text-gray-300">Linguagem de governo. Jargão. Texto que ninguém lê. Mensagem que não conecta.</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="text-yellow-400 font-bold text-2xl flex-shrink-0">✗</div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Post por Post</h3>
-                  <p className="text-gray-300">Sem estratégia. Sem narrativa. Sem propósito. Conteúdo aleatório que não constrói nada.</p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <div className="text-yellow-400 font-bold text-2xl flex-shrink-0">✗</div>
-                <div>
-                  <h3 className="text-xl font-bold mb-2">Agência Que Só Entrega Arte</h3>
-                  <p className="text-gray-300">Bonito, mas vazio. Sem estratégia. Sem resultados. Desaparece depois da entrega.</p>
-                </div>
-              </div>
+              {[
+                { icon: Eye, title: "Invisibilidade", desc: "Trabalho excelente que ninguém vê. Presença fraca. Povo não sabe o que você faz." },
+                { icon: AlertCircle, title: "Comunicação Burocrática", desc: "Linguagem de governo. Jargão. Texto que ninguém lê. Mensagem que não conecta." },
+                { icon: Radio, title: "Post por Post", desc: "Sem estratégia. Sem narrativa. Sem propósito. Conteúdo aleatório que não constrói nada." },
+                { icon: PenTool, title: "Agência Que Só Entrega Arte", desc: "Bonito, mas vazio. Sem estratégia. Sem resultados. Desaparece depois da entrega." }
+              ].map((item, i) => {
+                const Icon = item.icon;
+                return (
+                  <div 
+                    key={i}
+                    id={`inimigo-${i}`}
+                    data-animate
+                    className={`flex gap-4 transform ${
+                      isVisible[`inimigo-${i}`] ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+                    } duration-700 ease-out`}
+                  >
+                    <div className="flex-shrink-0">
+                      <div className="w-8 h-8 rounded-full bg-yellow-400/20 flex items-center justify-center">
+                        <Icon className="w-4 h-4 text-yellow-400" strokeWidth={2} />
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold mb-1">{item.title}</h3>
+                      <p className="text-gray-300 text-sm">{item.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <div className="bg-gray-900 p-8 rounded-lg border border-yellow-400/30">
+            <div 
+              id="inimigo-box"
+              data-animate
+              className={`bg-gray-900 p-8 rounded-lg border border-yellow-400/30 transform ${
+                isVisible['inimigo-box'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+              } duration-700 ease-out`}
+            >
               <h3 className="text-2xl font-bold mb-6 text-yellow-400">A gente faz diferente</h3>
               <ul className="space-y-4 text-gray-300">
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
                   <span>Estratégia antes de tudo. Narrativa clara. Propósito em cada ação.</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
                   <span>Presença constante. Múltiplas plataformas. Seu candidato sempre visível.</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
                   <span>Linguagem que conecta. Discurso claro. Pauta que o povo entende.</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
                   <span>Parceria real. Acompanhamento constante. Otimização semanal.</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
                   <span>Resultado: autoridade percebida, discurso claro, constância, vitória.</span>
                 </li>
               </ul>
@@ -207,14 +270,28 @@ export default function Home() {
                 "Distribuição inteligente: reels, stories, grupos, recortes - onde seu público está",
                 "Otimização semanal: ajustes por sinais do público, métrica que importa é atenção"
               ].map((item, i) => (
-                <div key={i} className="flex gap-4">
-                  <CheckCircle2 className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                <div 
+                  key={i}
+                  id={`promessa-${i}`}
+                  data-animate
+                  className={`flex gap-4 transform ${
+                    isVisible[`promessa-${i}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  } duration-700 ease-out`}
+                  style={{ transitionDelay: `${i * 50}ms` }}
+                >
+                  <CheckCircle2 className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" strokeWidth={1.5} />
                   <p className="text-lg text-gray-700">{item}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-gray-50 p-8 rounded-lg border border-gray-200">
+            <div 
+              id="promessa-box"
+              data-animate
+              className={`bg-gray-50 p-8 rounded-lg border border-gray-200 transform ${
+                isVisible['promessa-box'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+              } duration-700 ease-out`}
+            >
               <h3 className="text-2xl font-bold mb-6">Resultado</h3>
               <div className="space-y-4">
                 <div className="border-l-4 border-yellow-400 pl-4">
@@ -246,21 +323,34 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "🎯", title: "Estratégia de Narrativa", desc: "Bandeira, inimigo, promessa. Discurso claro." },
-              { icon: "📅", title: "Calendário de Guerra", desc: "Conteúdo estratégico, diário, em múltiplos formatos." },
-              { icon: "🎬", title: "Roteiros e Vídeos", desc: "Reels, stories, vídeos que viralizam e educam." },
-              { icon: "📱", title: "Gestão de Redes", desc: "Instagram, TikTok, YouTube Shorts, estratégicos." },
-              { icon: "📊", title: "Conteúdo de Mandato", desc: "Prestação de contas com impacto e narrativa." },
-              { icon: "🎨", title: "Identidade Visual", desc: "Design e criativos que reforçam sua narrativa." },
-              { icon: "💬", title: "Gestão de WhatsApp", desc: "Base de contatos, mobilização, relacionamento." },
-              { icon: "📈", title: "Monitoramento", desc: "Métricas que importam: atenção, retenção, ação." }
-            ].map((service, i) => (
-              <div key={i} className="bg-white p-6 rounded-lg border border-gray-200 hover:border-yellow-400 hover:shadow-lg transition group cursor-pointer">
-                <div className="text-4xl mb-4 group-hover:scale-110 transition">{service.icon}</div>
-                <h3 className="font-bold text-lg mb-2">{service.title}</h3>
-                <p className="text-sm text-gray-600">{service.desc}</p>
-              </div>
-            ))}
+              { icon: Target, title: "Estratégia de Narrativa", desc: "Bandeira, inimigo, promessa. Discurso claro." },
+              { icon: Activity, title: "Calendário de Guerra", desc: "Conteúdo estratégico, diário, em múltiplos formatos." },
+              { icon: Zap, title: "Roteiros e Vídeos", desc: "Reels, stories, vídeos que viralizam e educam." },
+              { icon: Share2, title: "Gestão de Redes", desc: "Instagram, TikTok, YouTube Shorts, estratégicos." },
+              { icon: BarChart3, title: "Conteúdo de Mandato", desc: "Prestação de contas com impacto e narrativa." },
+              { icon: PenTool, title: "Identidade Visual", desc: "Design e criativos que reforçam sua narrativa." },
+              { icon: MessageCircle, title: "Gestão de WhatsApp", desc: "Base de contatos, mobilização, relacionamento." },
+              { icon: TrendingUp, title: "Monitoramento", desc: "Métricas que importam: atenção, retenção, ação." }
+            ].map((service, i) => {
+              const Icon = service.icon;
+              return (
+                <div 
+                  key={i}
+                  id={`servico-${i}`}
+                  data-animate
+                  className={`bg-white p-6 rounded-lg border border-gray-200 hover:border-yellow-400 hover:shadow-lg transition group cursor-pointer transform ${
+                    isVisible[`servico-${i}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  } duration-700 ease-out`}
+                  style={{ transitionDelay: `${i * 30}ms` }}
+                >
+                  <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center mb-4 group-hover:bg-yellow-400 transition">
+                    <Icon className="w-5 h-5 text-yellow-400 group-hover:text-black transition" strokeWidth={1.5} />
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">{service.title}</h3>
+                  <p className="text-sm text-gray-600">{service.desc}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -281,7 +371,15 @@ export default function Home() {
               { num: "05", title: "Distribuição", desc: "Lançamos em múltiplas plataformas, onde seu público está" },
               { num: "06", title: "Otimização", desc: "Ajustamos conforme sinais do público, semanal" }
             ].map((step, i) => (
-              <div key={i} className="relative">
+              <div 
+                key={i}
+                id={`processo-${i}`}
+                data-animate
+                className={`relative transform ${
+                  isVisible[`processo-${i}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } duration-700 ease-out`}
+                style={{ transitionDelay: `${i * 50}ms` }}
+              >
                 <div className="bg-black text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl mb-4">
                   {step.num}
                 </div>
@@ -292,7 +390,13 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="bg-yellow-400 text-black p-8 rounded-lg">
+          <div 
+            id="processo-resultado"
+            data-animate
+            className={`bg-yellow-400 text-black p-8 rounded-lg transform ${
+              isVisible['processo-resultado'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            } duration-700 ease-out`}
+          >
             <p className="text-lg font-semibold">
               🎯 Resultado: Seu candidato ou mandato com discurso claro, pauta certa, constância e autoridade. Povo sabe quem você é. Vota em você.
             </p>
@@ -300,13 +404,17 @@ export default function Home() {
         </div>
       </section>
 
-
-
       {/* ========== ABOUT SECTION ========== */}
       <section id="sobre" className="py-20 md:py-28 bg-white">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+            <div 
+              id="sobre-text"
+              data-animate
+              className={`transform ${
+                isVisible['sobre-text'] ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+              } duration-700 ease-out`}
+            >
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Quem somos</h2>
               <p className="text-lg text-gray-700 mb-4 leading-relaxed">
                 <strong>Daniel Carvalho</strong> é consultor de marketing político e eleitoral, fundador da DCS Mídia. Atua há 10 anos no mercado de marketing, desenvolvendo estratégias e liderando projetos em campanhas municipais e estaduais, além de trabalhos contínuos com mandatos de vereador, deputado estadual e federal.
@@ -330,7 +438,13 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="relative">
+            <div 
+              id="sobre-image"
+              data-animate
+              className={`relative transform ${
+                isVisible['sobre-image'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+              } duration-700 ease-out`}
+            >
               <img 
                 src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028858232/4qqDDmhxZ4hQffQuMCJG7z/perfil-daniel_a3605382.png" 
                 alt="Daniel Carvalho - Fundador DCS Mídia" 
@@ -355,24 +469,32 @@ export default function Home() {
         </div>
 
         <div className="container relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Pronto para construir autoridade?</h2>
-          <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-            Agende um diagnóstico gratuito. Vamos entender seu contexto, desafios e oportunidades. Vamos mostrar como transformar sua comunicação em estratégia.
-          </p>
+          <div 
+            id="cta-final"
+            data-animate
+            className={`transform ${
+              isVisible['cta-final'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            } duration-700 ease-out`}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Pronto para construir autoridade?</h2>
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              Agende um diagnóstico gratuito. Vamos entender seu contexto, desafios e oportunidades. Vamos mostrar como transformar sua comunicação em estratégia.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 text-base font-semibold">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Chamar no WhatsApp
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black text-base font-semibold">
-              Agendar Diagnóstico
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 text-base font-semibold">
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Chamar no WhatsApp
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black text-base font-semibold">
+                Agendar Diagnóstico
+              </Button>
+            </div>
+
+            <p className="text-gray-400 mt-8">
+              📧 [INSERIR EMAIL] | 📱 [INSERIR WHATSAPP]
+            </p>
           </div>
-
-          <p className="text-gray-400 mt-8">
-            📧 [INSERIR EMAIL] | 📱 [INSERIR WHATSAPP]
-          </p>
         </div>
       </section>
 
