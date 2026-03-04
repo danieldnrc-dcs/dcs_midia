@@ -1,18 +1,19 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, MessageCircle, Calendar, Zap, Users, TrendingUp, Eye } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 
 /**
  * DCS Mídia - Home Page
  * Design: Minimalism Corporativo Ousado
  * Colors: Preto (#000000), Branco (#FFFFFF), Amarelo (#FFD700)
- * Typography: Montserrat (titles), Inter (body)
- * Layout: Assimétrico, com linhas amarelas diagonais como separadores
+ * Typography: Syne (hero), Montserrat (titles), Inter (body)
+ * 
+ * NARRATIVA-MÃE:
+ * Bandeira: Comunicação com estratégia, presença e narrativa.
+ * Inimigo: Político invisível, comunicação burocrática, post por post, agência que só entrega arte.
+ * Promessa: Campanha/mandato com discurso claro, pauta certa, constância, e percepção de autoridade.
  */
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState("strategy");
-
   return (
     <div className="min-h-screen bg-white">
       {/* ========== HEADER ========== */}
@@ -30,7 +31,6 @@ export default function Home() {
             <a href="#servicos" className="text-sm font-medium text-gray-700 hover:text-black transition">Serviços</a>
             <a href="#metodo" className="text-sm font-medium text-gray-700 hover:text-black transition">Método</a>
             <a href="#cases" className="text-sm font-medium text-gray-700 hover:text-black transition">Cases</a>
-            <a href="#faq" className="text-sm font-medium text-gray-700 hover:text-black transition">FAQ</a>
           </nav>
           <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
             <MessageCircle className="w-4 h-4 mr-2" />
@@ -54,7 +54,7 @@ export default function Home() {
               Marketing Político direto ao ponto.
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Comunicação e marketing estratégico para mandatos, projetos políticos e campanhas.
+              Comunicação com estratégia, presença e narrativa. Seu candidato ou mandato com discurso claro, pauta certa e autoridade percebida.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 text-base font-semibold">
@@ -72,23 +72,35 @@ export default function Home() {
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent transform rotate-45 -translate-y-1/2 translate-x-1/2"></div>
       </section>
 
-      {/* ========== PROBLEM SECTION ========== */}
+      {/* ========== BANDEIRA SECTION ========== */}
       <section className="py-20 md:py-28 bg-gray-50 relative">
         <div className="absolute left-0 top-0 w-1 h-32 bg-yellow-400"></div>
         
         <div className="container">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">O problema que ninguém fala</h2>
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">O que a gente defende</h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Você trabalha. Você se dedica. Mas ninguém vê. Seu adversário domina o feed. Sua narrativa é fraca. Você não consegue engajar. E a campanha passa despercebida.
+              Comunicação com estratégia, presença e narrativa. Não é post por post. Não é só arte bonita. É discurso claro, pauta certa, constância e autoridade.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "👁️", title: "Invisibilidade", desc: "Trabalho sem visibilidade não existe na política" },
-              { icon: "📱", title: "Desconexão", desc: "Mensagem não chega ao público certo, na hora certa" },
-              { icon: "⚡", title: "Falta de Estratégia", desc: "Posts aleatórios não constroem autoridade" }
+              { 
+                icon: "🎯", 
+                title: "Estratégia", 
+                desc: "Cada ação tem propósito. Cada post reforça narrativa. Cada conteúdo constrói autoridade." 
+              },
+              { 
+                icon: "📱", 
+                title: "Presença", 
+                desc: "Constância em múltiplas plataformas. Seu candidato/mandato sempre visível, sempre relevante." 
+              },
+              { 
+                icon: "💬", 
+                title: "Narrativa", 
+                desc: "Discurso claro que o povo entende. Pauta que conecta. Mensagem que fica." 
+              }
             ].map((item, i) => (
               <div key={i} className="bg-white p-8 rounded-lg border border-gray-200 hover:border-yellow-400 transition">
                 <div className="text-4xl mb-4">{item.icon}</div>
@@ -100,57 +112,75 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== SOLUTION SECTION ========== */}
+      {/* ========== INIMIGO SECTION ========== */}
       <section className="py-20 md:py-28 bg-black text-white relative overflow-hidden">
         <div className="absolute right-0 top-1/2 w-96 h-96 bg-yellow-400/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
         
         <div className="container relative z-10">
-          <div className="max-w-2xl mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Nossa solução</h2>
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">O que a gente combate</h2>
             <p className="text-xl text-gray-300">
-              Estratégia + Narrativa + Calendário de Guerra Digital = Presença constante, autoridade construída, resultados mensuráveis.
+              Político invisível. Comunicação burocrática. Post por post sem estratégia. Agência que só entrega arte e some. Isso não funciona.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
-              {[
-                "Diagnóstico profundo: o que você defende, contra o que luta, por que é necessário",
-                "Narrativa-mãe: bandeira, injustiça, solução - tudo alinhado",
-                "Calendário de guerra: conteúdo diário, formatos variados, presença constante",
-                "Produção profissional: roteiro, captação, edição, design de impacto",
-                "Distribuição estratégica: reels, stories, grupos, recortes - onde seu público está",
-                "Otimização semanal: ajustes por sinais do público, métrica que importa é atenção"
-              ].map((item, i) => (
-                <div key={i} className="flex gap-4">
-                  <CheckCircle2 className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
-                  <p className="text-lg text-gray-200">{item}</p>
+              <div className="flex gap-4">
+                <div className="text-yellow-400 font-bold text-2xl flex-shrink-0">✗</div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Invisibilidade</h3>
+                  <p className="text-gray-300">Trabalho excelente que ninguém vê. Presença fraca. Povo não sabe o que você faz.</p>
                 </div>
-              ))}
+              </div>
+
+              <div className="flex gap-4">
+                <div className="text-yellow-400 font-bold text-2xl flex-shrink-0">✗</div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Comunicação Burocrática</h3>
+                  <p className="text-gray-300">Linguagem de governo. Jargão. Texto que ninguém lê. Mensagem que não conecta.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="text-yellow-400 font-bold text-2xl flex-shrink-0">✗</div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Post por Post</h3>
+                  <p className="text-gray-300">Sem estratégia. Sem narrativa. Sem propósito. Conteúdo aleatório que não constrói nada.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-4">
+                <div className="text-yellow-400 font-bold text-2xl flex-shrink-0">✗</div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Agência Que Só Entrega Arte</h3>
+                  <p className="text-gray-300">Bonito, mas vazio. Sem estratégia. Sem resultados. Desaparece depois da entrega.</p>
+                </div>
+              </div>
             </div>
 
             <div className="bg-gray-900 p-8 rounded-lg border border-yellow-400/30">
-              <h3 className="text-2xl font-bold mb-6 text-yellow-400">Resultado: Guerra de Atenção Vencida</h3>
+              <h3 className="text-2xl font-bold mb-6 text-yellow-400">A gente faz diferente</h3>
               <ul className="space-y-4 text-gray-300">
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold">✓</span>
-                  <span>Presença constante em múltiplas superfícies</span>
+                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span>Estratégia antes de tudo. Narrativa clara. Propósito em cada ação.</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold">✓</span>
-                  <span>Narrativa clara e coerente</span>
+                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span>Presença constante. Múltiplas plataformas. Seu candidato sempre visível.</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold">✓</span>
-                  <span>Autoridade percebida pelo público</span>
+                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span>Linguagem que conecta. Discurso claro. Pauta que o povo entende.</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold">✓</span>
-                  <span>Engajamento crescente</span>
+                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span>Parceria real. Acompanhamento constante. Otimização semanal.</span>
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold">✓</span>
-                  <span>Posicionamento dominante</span>
+                  <span className="text-yellow-400 font-bold text-lg">→</span>
+                  <span>Resultado: autoridade percebida, discurso claro, constância, vitória.</span>
                 </li>
               </ul>
             </div>
@@ -158,23 +188,75 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ========== PROMESSA SECTION ========== */}
+      <section className="py-20 md:py-28 bg-white">
+        <div className="container">
+          <div className="max-w-3xl mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">O futuro que a gente constrói</h2>
+            <p className="text-xl text-gray-700 leading-relaxed">
+              Campanha ou mandato com discurso claro. Pauta certa. Constância em todos os canais. Percepção de autoridade. Povo sabe quem você é, o que você faz e por que você é necessário.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              {[
+                "Diagnóstico profundo: entendemos seu contexto, desafios, oportunidades",
+                "Narrativa-mãe: bandeira clara, inimigo definido, promessa real",
+                "Calendário de guerra: conteúdo estratégico, diário, em múltiplos formatos",
+                "Produção profissional: roteiro, captação, edição, design de impacto",
+                "Distribuição inteligente: reels, stories, grupos, recortes - onde seu público está",
+                "Otimização semanal: ajustes por sinais do público, métrica que importa é atenção"
+              ].map((item, i) => (
+                <div key={i} className="flex gap-4">
+                  <CheckCircle2 className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" />
+                  <p className="text-lg text-gray-700">{item}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-gray-50 p-8 rounded-lg border border-gray-200">
+              <h3 className="text-2xl font-bold mb-6">Resultado</h3>
+              <div className="space-y-4">
+                <div className="border-l-4 border-yellow-400 pl-4">
+                  <p className="font-bold text-lg mb-1">Discurso Claro</p>
+                  <p className="text-gray-600">Povo entende exatamente o que você defende e por que você é necessário.</p>
+                </div>
+                <div className="border-l-4 border-yellow-400 pl-4">
+                  <p className="font-bold text-lg mb-1">Pauta Certa</p>
+                  <p className="text-gray-600">Cada conteúdo reforça sua narrativa. Nada é aleatório.</p>
+                </div>
+                <div className="border-l-4 border-yellow-400 pl-4">
+                  <p className="font-bold text-lg mb-1">Constância</p>
+                  <p className="text-gray-600">Presença diária em múltiplas plataformas. Você não desaparece.</p>
+                </div>
+                <div className="border-l-4 border-yellow-400 pl-4">
+                  <p className="font-bold text-lg mb-1">Autoridade Percebida</p>
+                  <p className="text-gray-600">Povo vê você como referência. Confia em você. Vota em você.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ========== SERVICES SECTION ========== */}
-      <section id="servicos" className="py-20 md:py-28 bg-white">
+      <section id="servicos" className="py-20 md:py-28 bg-gray-50">
         <div className="container">
           <h2 className="text-4xl md:text-5xl font-bold mb-16">Nossos serviços</h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "🎯", title: "Estratégia de Narrativa", desc: "Posicionamento e linha editorial" },
-              { icon: "📅", title: "Calendário de Guerra", desc: "Conteúdo diário estratégico" },
-              { icon: "🎬", title: "Roteiros e Vídeos", desc: "Reels, stories e conteúdo viral" },
-              { icon: "📱", title: "Gestão de Redes", desc: "Instagram, TikTok, YouTube Shorts" },
-              { icon: "📊", title: "Conteúdo de Mandato", desc: "Prestação de contas com impacto" },
-              { icon: "🎨", title: "Identidade Visual", desc: "Design e criativos políticos" },
-              { icon: "💬", title: "Gestão de WhatsApp", desc: "Base e mobilização" },
-              { icon: "📈", title: "Monitoramento", desc: "Ajustes e otimização semanal" }
+              { icon: "🎯", title: "Estratégia de Narrativa", desc: "Bandeira, inimigo, promessa. Discurso claro." },
+              { icon: "📅", title: "Calendário de Guerra", desc: "Conteúdo estratégico, diário, em múltiplos formatos." },
+              { icon: "🎬", title: "Roteiros e Vídeos", desc: "Reels, stories, vídeos que viralizam e educam." },
+              { icon: "📱", title: "Gestão de Redes", desc: "Instagram, TikTok, YouTube Shorts, estratégicos." },
+              { icon: "📊", title: "Conteúdo de Mandato", desc: "Prestação de contas com impacto e narrativa." },
+              { icon: "🎨", title: "Identidade Visual", desc: "Design e criativos que reforçam sua narrativa." },
+              { icon: "💬", title: "Gestão de WhatsApp", desc: "Base de contatos, mobilização, relacionamento." },
+              { icon: "📈", title: "Monitoramento", desc: "Métricas que importam: atenção, retenção, ação." }
             ].map((service, i) => (
-              <div key={i} className="bg-gray-50 p-6 rounded-lg border border-gray-200 hover:border-yellow-400 hover:shadow-lg transition group cursor-pointer">
+              <div key={i} className="bg-white p-6 rounded-lg border border-gray-200 hover:border-yellow-400 hover:shadow-lg transition group cursor-pointer">
                 <div className="text-4xl mb-4 group-hover:scale-110 transition">{service.icon}</div>
                 <h3 className="font-bold text-lg mb-2">{service.title}</h3>
                 <p className="text-sm text-gray-600">{service.desc}</p>
@@ -185,7 +267,7 @@ export default function Home() {
       </section>
 
       {/* ========== PROCESS SECTION ========== */}
-      <section id="metodo" className="py-20 md:py-28 bg-gray-50 relative">
+      <section id="metodo" className="py-20 md:py-28 bg-white relative">
         <div className="absolute left-0 bottom-0 w-1 h-32 bg-yellow-400"></div>
         
         <div className="container">
@@ -193,12 +275,12 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
-              { num: "01", title: "Diagnóstico", desc: "Entendemos seu contexto, desafios e oportunidades" },
-              { num: "02", title: "Estratégia", desc: "Criamos narrativa-mãe e linha editorial" },
-              { num: "03", title: "Calendário", desc: "Planejamos conteúdo de 30 dias" },
-              { num: "04", title: "Produção", desc: "Roteiro, captação, edição, design" },
-              { num: "05", title: "Distribuição", desc: "Lançamos em múltiplas plataformas" },
-              { num: "06", title: "Otimização", desc: "Ajustamos conforme sinais do público" }
+              { num: "01", title: "Diagnóstico", desc: "Entendemos seu contexto, desafios, oportunidades, público" },
+              { num: "02", title: "Narrativa", desc: "Criamos bandeira, inimigo, promessa. Discurso claro." },
+              { num: "03", title: "Calendário", desc: "Planejamos conteúdo estratégico de 30 dias" },
+              { num: "04", title: "Produção", desc: "Roteiro, captação, edição, design de impacto" },
+              { num: "05", title: "Distribuição", desc: "Lançamos em múltiplas plataformas, onde seu público está" },
+              { num: "06", title: "Otimização", desc: "Ajustamos conforme sinais do público, semanal" }
             ].map((step, i) => (
               <div key={i} className="relative">
                 <div className="bg-black text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl mb-4">
@@ -213,14 +295,14 @@ export default function Home() {
 
           <div className="bg-yellow-400 text-black p-8 rounded-lg">
             <p className="text-lg font-semibold">
-              🎯 Resultado: Você não apenas aparece. Você domina a narrativa, constrói autoridade e vence a guerra de atenção.
+              🎯 Resultado: Seu candidato ou mandato com discurso claro, pauta certa, constância e autoridade. Povo sabe quem você é. Vota em você.
             </p>
           </div>
         </div>
       </section>
 
       {/* ========== CASES SECTION ========== */}
-      <section id="cases" className="py-20 md:py-28 bg-white">
+      <section id="cases" className="py-20 md:py-28 bg-gray-50">
         <div className="container">
           <h2 className="text-4xl md:text-5xl font-bold mb-16">Cases de sucesso</h2>
 
@@ -228,30 +310,30 @@ export default function Home() {
             {[
               {
                 title: "Campanha Municipal",
-                challenge: "Candidato desconhecido, sem presença digital",
-                strategy: "Narrativa focada em soluções locais, conteúdo diário de bastidor",
-                result: "Crescimento de 300% em seguidores, 50k impressões/mês"
+                challenge: "Candidato desconhecido, sem presença digital, discurso fraco",
+                strategy: "Narrativa focada em soluções locais, conteúdo diário de bastidor, pauta clara",
+                result: "Crescimento de 300% em seguidores, 50k impressões/mês, autoridade consolidada"
               },
               {
                 title: "Mandato Estadual",
-                challenge: "Narrativa confusa, baixo engajamento",
-                strategy: "Realinhamento de mensagem, calendário de conteúdo estratégico",
-                result: "Engajamento +250%, autoridade consolidada"
+                challenge: "Narrativa confusa, baixo engajamento, comunicação burocrática",
+                strategy: "Realinhamento de mensagem, calendário estratégico, linguagem clara",
+                result: "Engajamento +250%, autoridade percebida, povo sabe o que faz"
               },
               {
                 title: "Pré-candidatura Federal",
-                challenge: "Construir presença do zero em 6 meses",
-                strategy: "Estratégia de conteúdo viral + bastidor humano",
-                result: "100k seguidores, presença em mídia nacional"
+                challenge: "Construir presença do zero em 6 meses, discurso indefinido",
+                strategy: "Estratégia de narrativa clara + conteúdo de bastidor + pauta forte",
+                result: "100k seguidores, presença em mídia nacional, discurso claro"
               },
               {
                 title: "Gestão Pública",
-                challenge: "Comunicar ações sem parecer propaganda",
-                strategy: "Conteúdo de mandato com impacto real",
-                result: "Aprovação +40%, base mobilizada"
+                challenge: "Comunicar ações sem parecer propaganda, linguagem burocrática",
+                strategy: "Conteúdo de mandato com narrativa clara, linguagem acessível",
+                result: "Aprovação +40%, base mobilizada, povo entende ações"
               }
             ].map((caseItem, i) => (
-              <div key={i} className="bg-gray-50 p-8 rounded-lg border border-gray-200 hover:border-yellow-400 hover:shadow-lg transition">
+              <div key={i} className="bg-white p-8 rounded-lg border border-gray-200 hover:border-yellow-400 hover:shadow-lg transition">
                 <div className="flex items-start justify-between mb-4">
                   <h3 className="text-2xl font-bold">{caseItem.title}</h3>
                   <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-black font-bold">✓</div>
@@ -276,108 +358,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== TESTIMONIALS SECTION ========== */}
-      <section className="py-20 md:py-28 bg-black text-white">
-        <div className="container">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16">O que nossos clientes dizem</h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: "João Silva",
-                role: "Candidato a Prefeito",
-                text: "Chegamos do zero a 50k seguidores em 4 meses. A estratégia da DCS transformou minha campanha.",
-                avatar: "JS"
-              },
-              {
-                name: "Maria Santos",
-                role: "Assessora de Mandato",
-                text: "Finalmente conseguimos comunicar ações de forma que o povo entende e se engaja. Muito profissional.",
-                avatar: "MS"
-              },
-              {
-                name: "Carlos Oliveira",
-                role: "Deputado Estadual",
-                text: "A narrativa que criamos virou referência. Agora somos o padrão que outros tentam copiar.",
-                avatar: "CO"
-              }
-            ].map((testimonial, i) => (
-              <div key={i} className="bg-gray-900 p-8 rounded-lg border border-yellow-400/30">
-                <p className="text-gray-300 mb-6 italic">"{testimonial.text}"</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-yellow-400 text-black rounded-full flex items-center justify-center font-bold">
-                    {testimonial.avatar}
-                  </div>
-                  <div>
-                    <p className="font-bold">{testimonial.name}</p>
-                    <p className="text-sm text-gray-400">{testimonial.role}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== FAQ SECTION ========== */}
-      <section id="faq" className="py-20 md:py-28 bg-white">
-        <div className="container">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16">Perguntas frequentes</h2>
-
-          <div className="max-w-3xl space-y-6">
-            {[
-              {
-                q: "Quanto tempo leva para ver resultados?",
-                a: "Primeiros sinais aparecem em 2-3 semanas. Resultados consolidados em 2-3 meses. Tudo depende de consistência e execução."
-              },
-              {
-                q: "Vocês garantem vitória?",
-                a: "Não. Ninguém garante. O que garantimos é estratégia, execução profissional e presença constante. Vitória é resultado de múltiplos fatores."
-              },
-              {
-                q: "Como funciona o acompanhamento?",
-                a: "Reuniões semanais para revisar métricas, ajustar estratégia e planejar próximas ações. Você tem acesso a dashboard em tempo real."
-              },
-              {
-                q: "Qual é o investimento?",
-                a: "Varia conforme escopo (campanha, mandato, gestão). Começamos com diagnóstico gratuito para entender suas necessidades."
-              },
-              {
-                q: "Vocês trabalham com qual tipo de político?",
-                a: "Trabalhamos com candidatos, pré-candidatos, vereadores, deputados, prefeitos e equipes de mandato. Qualquer nível, desde que haja comprometimento com a estratégia."
-              },
-              {
-                q: "E se o adversário copiar nossa estratégia?",
-                a: "Estratégia é apenas o começo. Execução, consistência e adaptação é o que diferencia. Além disso, estamos sempre evoluindo."
-              },
-              {
-                q: "Vocês fazem conteúdo que parece propaganda?",
-                a: "Evitamos ao máximo. Nosso foco é comunicação autêntica, narrativa clara e conteúdo que realmente interessa ao público."
-              },
-              {
-                q: "Como é o processo de onboarding?",
-                a: "1) Diagnóstico (entender contexto), 2) Proposta (estratégia customizada), 3) Contrato, 4) Kick-off (começamos produção). Tudo em 2 semanas."
-              },
-              {
-                q: "Vocês trabalham com redes sociais apenas?",
-                a: "Começamos com redes, mas também cobrimos WhatsApp, email, grupos, mídia impressa e até mídia paga quando necessário."
-              },
-              {
-                q: "Qual é o diferencial de vocês?",
-                a: "Entendemos política. Não somos apenas agência de social media. Sabemos narrativa, estratégia de campanha e construção de autoridade."
-              }
-            ].map((faq, i) => (
-              <div key={i} className="border-b border-gray-200 pb-6 last:border-b-0">
-                <h3 className="text-lg font-bold mb-3 text-black">{faq.q}</h3>
-                <p className="text-gray-700 leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ========== ABOUT SECTION ========== */}
-      <section id="sobre" className="py-20 md:py-28 bg-gray-50">
+      <section id="sobre" className="py-20 md:py-28 bg-white">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
@@ -386,10 +368,10 @@ export default function Home() {
                 DCS Mídia é uma agência especializada em marketing político e comunicação estratégica. Nascemos da frustração de ver políticos com trabalho excelente desaparecerem na invisibilidade digital.
               </p>
               <p className="text-lg text-gray-700 mb-4 leading-relaxed">
-                Transformamos comunicação política em estratégia de guerra de atenção: posicionamento claro, narrativa coerente, prova de trabalho e presença constante.
+                Transformamos comunicação política em estratégia: discurso claro, pauta certa, constância e autoridade percebida. Não fazemos post por post. Construímos narrativa.
               </p>
               <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Não fazemos post. Construímos presença, narrativa e autoridade.
+                Defendemos comunicação com estratégia, presença e narrativa. Combatemos invisibilidade, burocracia e agências que só entregam arte. Prometemos futuro onde seu candidato ou mandato é referência.
               </p>
               <div className="space-y-3">
                 <p className="flex items-center gap-3 text-gray-700">
@@ -429,9 +411,9 @@ export default function Home() {
         </div>
 
         <div className="container relative z-10 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Pronto para vencer a guerra de atenção?</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Pronto para construir autoridade?</h2>
           <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-            Agende um diagnóstico gratuito. Vamos entender seu contexto, desafios e oportunidades. Sem compromisso.
+            Agende um diagnóstico gratuito. Vamos entender seu contexto, desafios e oportunidades. Vamos mostrar como transformar sua comunicação em estratégia.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -456,14 +438,14 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <p className="font-bold text-white mb-4">DCS Mídia</p>
-              <p className="text-sm">Marketing político e comunicação estratégica.</p>
+              <p className="text-sm">Marketing político e comunicação estratégica. Discurso claro. Pauta certa. Constância. Autoridade.</p>
             </div>
             <div>
               <p className="font-bold text-white mb-4">Serviços</p>
               <ul className="text-sm space-y-2">
-                <li><a href="#" className="hover:text-white transition">Estratégia</a></li>
-                <li><a href="#" className="hover:text-white transition">Conteúdo</a></li>
-                <li><a href="#" className="hover:text-white transition">Redes Sociais</a></li>
+                <li><a href="#servicos" className="hover:text-white transition">Estratégia</a></li>
+                <li><a href="#servicos" className="hover:text-white transition">Conteúdo</a></li>
+                <li><a href="#servicos" className="hover:text-white transition">Redes Sociais</a></li>
               </ul>
             </div>
             <div>
@@ -471,7 +453,7 @@ export default function Home() {
               <ul className="text-sm space-y-2">
                 <li><a href="#sobre" className="hover:text-white transition">Sobre</a></li>
                 <li><a href="#cases" className="hover:text-white transition">Cases</a></li>
-                <li><a href="#faq" className="hover:text-white transition">FAQ</a></li>
+                <li><a href="#metodo" className="hover:text-white transition">Método</a></li>
               </ul>
             </div>
             <div>
