@@ -146,7 +146,7 @@ export default function Home() {
         
         <div className="container">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">O que a gente defende</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">O que defendemos:</h2>
             <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
               Comunicação com estratégia, presença e narrativa. Não é post por post. Não é só arte bonita. É discurso claro, pauta certa, constância e autoridade.
             </p>
@@ -198,16 +198,16 @@ export default function Home() {
         
         <div className="container relative z-10">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">O que a gente combate</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">O que combatemos:</h2>
             <p className={`text-xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>
-              Político invisível. Comunicação burocrática. Post por post sem estratégia. Agência que só entrega arte e some. Isso não funciona.
+              Político invisível. Comunicação burocrática. Post sem estratégia, improvisos.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
               {[
-                { icon: Eye, title: "Invisibilidade", desc: "Trabalho excelente que ninguém vê. Presença fraca. Povo não sabe o que você faz." },
+                { icon: Eye, title: "Invisibilidade", desc: "Trabalho excelente que ninguém vê. Presença fraca. Eleitorado não sabe o que você faz." },
                 { icon: AlertCircle, title: "Comunicação Burocrática", desc: "Linguagem de governo. Jargão. Texto que ninguém lê. Mensagem que não conecta." },
                 { icon: Radio, title: "Post por Post", desc: "Sem estratégia. Sem narrativa. Sem propósito. Conteúdo aleatório que não constrói nada." },
                 { icon: PenTool, title: "Agência Que Só Entrega Arte", desc: "Bonito, mas vazio. Sem estratégia. Sem resultados. Desaparece depois da entrega." }
@@ -242,6 +242,7 @@ export default function Home() {
               className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-900'} p-8 rounded-lg border border-yellow-400/30 transform transition-colors ${
                 isVisible['inimigo-box'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
               } duration-700 ease-out`}
+              style={{backgroundColor: '#121212'}}
             >
               <h3 className="text-2xl font-bold mb-6 text-yellow-400">A gente faz diferente</h3>
               <ul className={`space-y-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>
@@ -251,19 +252,11 @@ export default function Home() {
                 </li>
                 <li className="flex gap-3">
                   <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
-                  <span>Presença constante. Múltiplas plataformas. Seu candidato sempre visível.</span>
+                  <span>Presença constante. Seu candidato/mandato sempre visível, sempre relevante.</span>
                 </li>
                 <li className="flex gap-3">
                   <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
-                  <span>Linguagem que conecta. Discurso claro. Pauta que o povo entende.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
-                  <span>Parceria real. Acompanhamento constante. Otimização semanal.</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
-                  <span>Resultado: autoridade percebida, discurso claro, constância, vitória.</span>
+                  <span>Discurso que conecta. Povo entende. Povo acredita. Povo vota.</span>
                 </li>
               </ul>
             </div>
@@ -275,9 +268,9 @@ export default function Home() {
       <section className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} transition-colors`}>
         <div className="container">
           <div className="max-w-3xl mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">O futuro que a gente constrói</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">O futuro que construimos:</h2>
             <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
-              Campanha ou mandato com discurso claro. Pauta certa. Constância em todos os canais. Percepção de autoridade. Povo sabe quem você é, o que você faz e por que você é necessário.
+              Campanha ou mandato com discurso claro, pauta certa, constância em todos os canais, percepção de autoridade. As pessoas sabem quem você é, o que você faz e por que você é necessário.
             </p>
           </div>
 
@@ -285,11 +278,11 @@ export default function Home() {
             <div className="space-y-6">
               {[
                 "Diagnóstico profundo: entendemos seu contexto, desafios, oportunidades",
-                "Narrativa-mãe: bandeira clara, inimigo definido, promessa real",
-                "Calendário de guerra: conteúdo estratégico, diário, em múltiplos formatos",
+                "Narrativa: bandeira clara, inimigo definido, promessa real",
+                "Calendário editorial: conteúdo estratégico, diário, em múltiplos formatos",
                 "Produção profissional: roteiro, captação, edição, design de impacto",
                 "Distribuição inteligente: reels, stories, grupos, recortes - onde seu público está",
-                "Otimização semanal: ajustes por sinais do público, métrica que importa é atenção"
+                "Otimização semanal: ajustes por sinais do público: A métrica que importa é atenção."
               ].map((item, i) => (
                 <div 
                   key={i}
@@ -317,7 +310,7 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="border-l-4 border-yellow-400 pl-4">
                   <p className="font-bold text-lg mb-1">Discurso Claro</p>
-                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Povo entende exatamente o que você defende e por que você é necessário.</p>
+                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Eleitorado entende exatamente o que você defende e por que você é necessário.</p>
                 </div>
                 <div className="border-l-4 border-yellow-400 pl-4">
                   <p className="font-bold text-lg mb-1">Pauta Certa</p>
@@ -329,7 +322,7 @@ export default function Home() {
                 </div>
                 <div className="border-l-4 border-yellow-400 pl-4">
                   <p className="font-bold text-lg mb-1">Autoridade Percebida</p>
-                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Povo vê você como referência. Confia em você. Vota em você.</p>
+                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Eleitorado vê você como referência. Confia em você. Vota em você.</p>
                 </div>
               </div>
             </div>
@@ -345,12 +338,12 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: Target, title: "Estratégia de Narrativa", desc: "Bandeira, inimigo, promessa. Discurso claro." },
-              { icon: Activity, title: "Calendário de Guerra", desc: "Conteúdo estratégico, diário, em múltiplos formatos." },
+              { icon: Activity, title: "Calendário editorial", desc: "Conteúdo estratégico, diário, em múltiplos formatos." },
               { icon: Zap, title: "Roteiros e Vídeos", desc: "Reels, stories, vídeos que viralizam e educam." },
               { icon: Share2, title: "Gestão de Redes", desc: "Instagram, TikTok, YouTube Shorts, estratégicos." },
               { icon: BarChart3, title: "Conteúdo de Mandato", desc: "Prestação de contas com impacto e narrativa." },
               { icon: PenTool, title: "Identidade Visual", desc: "Design e criativos que reforçam sua narrativa." },
-              { icon: MessageCircle, title: "Gestão de WhatsApp", desc: "Base de contatos, mobilização, relacionamento." },
+              { icon: MessageCircle, title: "Tráfego Pago", desc: "Investimento estratégico em anúncios digitais." },
               { icon: TrendingUp, title: "Monitoramento", desc: "Métricas que importam: atenção, retenção, ação." }
             ].map((service, i) => {
               const Icon = service.icon;
@@ -386,8 +379,8 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               { num: "01", title: "Diagnóstico", desc: "Entendemos seu contexto, desafios, oportunidades, público" },
-              { num: "02", title: "Narrativa", desc: "Criamos bandeira, inimigo, promessa. Discurso claro." },
-              { num: "03", title: "Calendário", desc: "Planejamos conteúdo estratégico de 30 dias" },
+              { num: "02", title: "Narrativa", desc: "Definimos bandeiras, inimigo, promessa. Discurso claro." },
+              { num: "03", title: "Calendário", desc: "Planejamos conteúdo estratégico." },
               { num: "04", title: "Produção", desc: "Roteiro, captação, edição, design de impacto" },
               { num: "05", title: "Distribuição", desc: "Lançamos em múltiplas plataformas, onde seu público está" },
               { num: "06", title: "Otimização", desc: "Ajustamos conforme sinais do público, semanal" }
@@ -419,7 +412,7 @@ export default function Home() {
             } duration-700 ease-out`}
           >
             <p className="text-lg font-semibold">
-              🎯 Resultado: Seu candidato ou mandato com discurso claro, pauta certa, constância e autoridade. Povo sabe quem você é. Vota em você.
+              🎯 Resultado: Seu candidato ou mandato com discurso claro, pauta certa, constância e autoridade. As pessoas te conhecem, se lembram de você e votam em você.
             </p>
           </div>
         </div>
@@ -436,7 +429,7 @@ export default function Home() {
                 isVisible['sobre-text'] ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
               } duration-700 ease-out`}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Quem somos</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Quem sou:</h2>
               <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-4 leading-relaxed`}>
                 <strong>Daniel Carvalho</strong> é consultor de marketing político e eleitoral, fundador da DCS Mídia. Atua há 10 anos no mercado de marketing, desenvolvendo estratégias e liderando projetos em campanhas municipais e estaduais, além de trabalhos contínuos com mandatos de vereador, deputado estadual e federal.
               </p>
@@ -462,17 +455,16 @@ export default function Home() {
             <div 
               id="sobre-image"
               data-animate
-              className={`relative transform ${
+              className={`transform ${
                 isVisible['sobre-image'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
               } duration-700 ease-out`}
             >
               <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028858232/4qqDDmhxZ4hQffQuMCJG7z/perfil-daniel_a3605382.png" 
-                alt="Daniel Carvalho - Fundador DCS Mídia" 
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028858232/4qqDDmhxZ4hQffQuMCJG7z/perfil-dc_7e9d9f8a.png" 
+                alt="Daniel Carvalho" 
                 className="rounded-lg shadow-lg"
               />
-              <div className="absolute -bottom-6 -right-6 bg-yellow-400 text-black p-6 rounded-lg shadow-lg max-w-xs">
-                <p className="font-bold text-lg mb-2">Daniel Carvalho</p>
+              <div className="mt-6 p-4 bg-yellow-400 text-black rounded-lg">
                 <p className="text-sm">Fundador da DCS Mídia. Especialista em estratégia de narrativa e comunicação política. 10+ anos de experiência em campanhas e mandatos.</p>
               </div>
             </div>
@@ -497,7 +489,7 @@ export default function Home() {
               isVisible['cta-final'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             } duration-700 ease-out`}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Pronto para construir autoridade?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Pronto para construir autoridade política?</h2>
             <p className={`text-xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'} mb-12 max-w-2xl mx-auto`}>
               Agende um diagnóstico gratuito. Vamos entender seu contexto, desafios e oportunidades. Vamos mostrar como transformar sua comunicação em estratégia.
             </p>
@@ -513,7 +505,7 @@ export default function Home() {
             </div>
 
             <p className="text-gray-400 mt-8">
-              📧 [INSERIR EMAIL] | 📱 [INSERIR WHATSAPP]
+              📧 contato@dcsmidia.com 
             </p>
           </div>
         </div>
@@ -525,7 +517,7 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <p className="font-bold text-white mb-4">DCS Mídia</p>
-              <p className="text-sm">Marketing político e comunicação estratégica. Discurso claro. Pauta certa. Constância. Autoridade.</p>
+              <p className="text-sm"></p>
             </div>
             <div>
               <p className="font-bold text-white mb-4">Serviços</p>
@@ -545,8 +537,8 @@ export default function Home() {
             </div>
             <div>
               <p className="font-bold text-white mb-4">Contato</p>
-              <p className="text-sm">[INSERIR EMAIL]</p>
-              <p className="text-sm">[INSERIR WHATSAPP]</p>
+              <p className="text-sm">contato@dcsmidia.com</p>
+              <p className="text-sm"></p>
             </div>
           </div>
 
