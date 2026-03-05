@@ -437,7 +437,7 @@ export default function Home() {
               } duration-700 ease-out`}
             >
               <img 
-                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028858232/4qqDDmhxZ4hQffQuMCJG7z/perfil-dc_7e9d9f8a.png" 
+                src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028858232/4qqDDmhxZ4hQffQuMCJG7z/perfil_DC_ceec5547.png" 
                 alt="Daniel Carvalho" 
                 className="w-48 h-48 md:w-full md:h-auto rounded-lg shadow-lg object-cover"
               />
