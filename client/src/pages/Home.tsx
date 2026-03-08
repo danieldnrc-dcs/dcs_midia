@@ -2,39 +2,25 @@ import { Button } from "@/components/ui/button";
 import { 
   ArrowRight, 
   MessageCircle, 
-  CheckCircle2,
   Target,
   Radio,
   MessageSquare,
   AlertCircle,
   TrendingUp,
-  Users,
   Zap,
   BarChart3,
   Share2,
   PenTool,
-  Smartphone,
   Activity,
   Eye,
   Moon,
-  Sun
+  Sun,
+  BookOpen
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { Link } from "wouter";
 
-/**
- * DCS Mídia - Home Page
- * Design: Minimalism Corporativo Ousado
- * Colors: Preto (#000000), Branco (#FFFFFF), Amarelo (#FFD700)
- * Typography: Syne (hero), Montserrat (titles), Inter (body)
- * 
- * NARRATIVA-MÃE:
- * Bandeira: Comunicação com estratégia, presença e narrativa.
- * Inimigo: Político invisível, comunicação burocrática, post por post, agência que só entrega arte.
- * Promessa: Campanha/mandato com discurso claro, pauta certa, constância, e percepção de autoridade.
- */
-
-// Scroll animation hook
 const useScrollAnimation = () => {
   const [isVisible, setIsVisible] = useState<Record<string, boolean>>({});
 
@@ -43,19 +29,14 @@ const useScrollAnimation = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible((prev) => ({
-              ...prev,
-              [entry.target.id]: true,
-            }));
+            setIsVisible((prev) => ({ ...prev, [entry.target.id]: true }));
           }
         });
       },
       { threshold: 0.1 }
     );
-
     const elements = document.querySelectorAll("[data-animate]");
     elements.forEach((el) => observer.observe(el));
-
     return () => elements.forEach((el) => observer.unobserve(el));
   }, []);
 
@@ -82,22 +63,15 @@ export default function Home() {
             <a href="#sobre" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Sobre</a>
             <a href="#servicos" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Serviços</a>
             <a href="#metodo" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Método</a>
+            <Link href="/blog" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Blog</Link>
           </nav>
           <div className="flex items-center gap-3">
             <button
               onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${
-                theme === 'dark'
-                  ? 'bg-gray-800 hover:bg-gray-700 text-yellow-400'
-                  : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
-              }`}
+              className={`p-2 rounded-lg transition-colors ${theme === 'dark' ? 'bg-gray-800 hover:bg-gray-700 text-yellow-400' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}`}
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? (
-                <Sun className="w-5 h-5" strokeWidth={1.5} />
-              ) : (
-                <Moon className="w-5 h-5" strokeWidth={1.5} />
-              )}
+              {theme === 'dark' ? <Sun className="w-5 h-5" strokeWidth={1.5} /> : <Moon className="w-5 h-5" strokeWidth={1.5} />}
             </button>
             <a href="https://wa.me/message/SESMAH5FUNJRG1" target="_blank" rel="noopener noreferrer">
               <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
@@ -117,7 +91,6 @@ export default function Home() {
             <line x1="200" y1="0" x2="400" y2="600" stroke="#FFD700" strokeWidth="3" opacity="0.3" />
           </svg>
         </div>
-        
         <div className="container relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight" style={{fontFamily: 'Syne, sans-serif'}}>
@@ -141,15 +114,41 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* Diagonal yellow line accent */}
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-br from-yellow-400/20 to-transparent transform rotate-45 -translate-y-1/2 translate-x-1/2"></div>
+      </section>
+
+      {/* ========== BLOG BANNER ========== */}
+      <section className={`py-10 ${theme === 'dark' ? 'bg-yellow-400' : 'bg-yellow-400'}`}>
+        <div className="container">
+          <div 
+            id="blog-banner"
+            data-animate
+            className={`flex flex-col md:flex-row items-center justify-between gap-6 transform ${
+              isVisible['blog-banner'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            } duration-700 ease-out`}
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center flex-shrink-0">
+                <BookOpen className="w-6 h-6 text-yellow-400" strokeWidth={1.5} />
+              </div>
+              <div>
+                <p className="font-bold text-black text-xl">Leia nosso Blog</p>
+                <p className="text-black/70 text-sm">Estratégia, narrativa e marketing político. Direto ao ponto.</p>
+              </div>
+            </div>
+            <Link href="/blog">
+              <Button className="bg-black text-yellow-400 hover:bg-gray-900 font-semibold flex-shrink-0">
+                Ver todos os artigos
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+          </div>
+        </div>
       </section>
 
       {/* ========== BANDEIRA SECTION ========== */}
       <section className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'} relative transition-colors`}>
         <div className="absolute left-0 top-0 w-1 h-32 bg-yellow-400"></div>
-        
         <div className="container">
           <div className="max-w-3xl mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">O que defendemos:</h2>
@@ -157,24 +156,11 @@ export default function Home() {
               Comunicação com estratégia, presença e narrativa. Não é post por post. Não é só arte bonita. É discurso claro, pauta certa, constância e autoridade.
             </p>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { 
-                icon: Target,
-                title: "Estratégia", 
-                desc: "Cada ação tem propósito. Cada post reforça narrativa. Cada conteúdo constrói autoridade." 
-              },
-              { 
-                icon: Radio,
-                title: "Presença", 
-                desc: "Constância em múltiplas plataformas. Seu candidato/mandato sempre visível, sempre relevante." 
-              },
-              { 
-                icon: MessageSquare,
-                title: "Narrativa", 
-                desc: "Discurso claro que o povo entende. Pauta que conecta. Mensagem que fica." 
-              }
+              { icon: Target, title: "Estratégia", desc: "Cada ação tem propósito. Cada post reforça narrativa. Cada conteúdo constrói autoridade." },
+              { icon: Radio, title: "Presença", desc: "Constância em múltiplas plataformas. Seu candidato/mandato sempre visível, sempre relevante." },
+              { icon: MessageSquare, title: "Narrativa", desc: "Discurso claro que o povo entende. Pauta que conecta. Mensagem que fica." }
             ].map((item, i) => {
               const Icon = item.icon;
               return (
@@ -201,7 +187,6 @@ export default function Home() {
       {/* ========== INIMIGO SECTION ========== */}
       <section className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-950' : 'bg-black'} text-white relative overflow-hidden transition-colors`}>
         <div className="absolute right-0 top-1/2 w-96 h-96 bg-yellow-400/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-        
         <div className="container relative z-10">
           <div className="max-w-3xl mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">O que combatemos:</h2>
@@ -209,7 +194,6 @@ export default function Home() {
               Político invisível. Comunicação burocrática. Post sem estratégia, improvisos.
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
               {[
@@ -241,17 +225,16 @@ export default function Home() {
                 );
               })}
             </div>
-
             <div 
               id="inimigo-box"
               data-animate
-              className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-gray-900'} p-8 rounded-lg border border-yellow-400/30 transform transition-colors ${
+              className={`p-8 rounded-lg border border-yellow-400/30 transform transition-colors ${
                 isVisible['inimigo-box'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
               } duration-700 ease-out`}
               style={{backgroundColor: '#121212'}}
             >
               <h3 className="text-2xl font-bold mb-6 text-yellow-400">Fazemos diferente</h3>
-              <ul className={`space-y-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>
+              <ul className="space-y-4 text-gray-300">
                 <li className="flex gap-3">
                   <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
                   <span>Estratégia antes de tudo. Narrativa clara. Propósito em cada ação.</span>
@@ -274,7 +257,6 @@ export default function Home() {
       <section id="servicos" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'} transition-colors`}>
         <div className="container">
           <h2 className="text-4xl md:text-5xl font-bold mb-16">Nossos serviços</h2>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { icon: Target, title: "Estratégia de Narrativa", desc: "Bandeira, inimigo, promessa. Discurso claro." },
@@ -313,7 +295,6 @@ export default function Home() {
       <section id="sobre" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} transition-colors`}>
         <div className="container">
           <div className="flex flex-col md:grid md:grid-cols-2 md:gap-12 md:items-center gap-8">
-            {/* Image first on mobile, second on desktop */}
             <div 
               id="sobre-image"
               data-animate
@@ -330,8 +311,6 @@ export default function Home() {
                 <p className="text-sm">Fundador da DCS Mídia. Especialista em estratégia digital e comunicação política. 10+ anos de experiência em campanhas e mandatos.</p>
               </div>
             </div>
-
-            {/* Text second on mobile, first on desktop */}
             <div 
               id="sobre-text"
               data-animate
@@ -368,10 +347,8 @@ export default function Home() {
       {/* ========== PROCESS SECTION ========== */}
       <section id="metodo" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} relative transition-colors`}>
         <div className="absolute left-0 bottom-0 w-1 h-32 bg-yellow-400"></div>
-        
         <div className="container">
           <h2 className="text-4xl md:text-5xl font-bold mb-16">Nosso processo</h2>
-
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {[
               { num: "01", title: "Diagnóstico", desc: "Entendemos seu contexto, desafios, oportunidades, público" },
@@ -399,7 +376,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-
           <div 
             id="processo-resultado"
             data-animate
@@ -408,7 +384,7 @@ export default function Home() {
             } duration-700 ease-out`}
           >
             <p className="text-lg font-semibold">
-              🎯 Resultado: Seu candidato ou mandato com discurso claro, pauta certa, constância e autoridade. As pessoas te conhecem, se lembram de você e votam em você.
+              Resultado: Seu candidato ou mandato com discurso claro, pauta certa, constância e autoridade. As pessoas te conhecem, se lembram de você e votam em você.
             </p>
           </div>
         </div>
@@ -425,10 +401,9 @@ export default function Home() {
             } duration-700 ease-out`}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">Pronto para construir autoridade política?</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'} mb-12 max-w-2xl mx-auto`}>
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
               Agende um diagnóstico gratuito. Vamos entender seu contexto, desafios e oportunidades. Vamos mostrar como transformar sua comunicação em estratégia.
             </p>
-
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://wa.me/message/SESMAH5FUNJRG1" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="bg-yellow-400 text-black hover:bg-yellow-500 text-base font-semibold">
@@ -442,21 +417,19 @@ export default function Home() {
                 </Button>
               </a>
             </div>
-
             <p className="text-gray-400 mt-8">
-              📧 contato@dcsmidia.com 
+              📧 contato@dcsmidia.com
             </p>
           </div>
         </div>
       </section>
 
       {/* ========== FOOTER ========== */}
-      <footer className={`${theme === 'dark' ? 'bg-gray-950 border-gray-800' : 'bg-gray-900 border-gray-800'} text-gray-400 py-12 border-t transition-colors`}>
+      <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <p className="font-bold text-white mb-4">DCS Mídia</p>
-              <p className="text-sm"></p>
             </div>
             <div>
               <p className="font-bold text-white mb-4">Serviços</p>
@@ -471,16 +444,14 @@ export default function Home() {
               <ul className="text-sm space-y-2">
                 <li><a href="#sobre" className="hover:text-white transition">Sobre</a></li>
                 <li><a href="#metodo" className="hover:text-white transition">Método</a></li>
-                <li><a href="#servicos" className="hover:text-white transition">Serviços</a></li>
+                <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
               </ul>
             </div>
             <div>
               <p className="font-bold text-white mb-4">Contato</p>
               <p className="text-sm">contato@dcsmidia.com</p>
-              <p className="text-sm"></p>
             </div>
           </div>
-
           <div className="border-t border-gray-800 pt-8 text-center text-sm">
             <p>&copy; 2026 DCS Mídia. Todos os direitos reservados. | Marketing direto ao ponto.</p>
           </div>
