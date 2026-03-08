@@ -270,71 +270,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== PROMESSA SECTION ========== */}
-      <section className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} transition-colors`}>
-        <div className="container">
-          <div className="max-w-3xl mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">O futuro que construimos:</h2>
-            <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} leading-relaxed`}>
-              Campanha ou mandato com discurso claro, pauta certa, constância em todos os canais, percepção de autoridade. As pessoas sabem quem você é, o que você faz e por que você é necessário.
-            </p>
-          </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-6">
-              {[
-                "Diagnóstico profundo: entendemos seu contexto, desafios, oportunidades",
-                "Narrativa: bandeira clara, inimigo definido, promessa real",
-                "Calendário editorial: conteúdo estratégico, diário, em múltiplos formatos",
-                "Produção profissional: roteiro, captação, edição, design de impacto",
-                "Distribuição inteligente: reels, stories, grupos, recortes - onde seu público está",
-                "Otimização semanal: ajustes por sinais do público: A métrica que importa é atenção."
-              ].map((item, i) => (
-                <div 
-                  key={i}
-                  id={`promessa-${i}`}
-                  data-animate
-                  className={`flex gap-4 transform ${
-                    isVisible[`promessa-${i}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                  } duration-700 ease-out`}
-                  style={{ transitionDelay: `${i * 50}ms` }}
-                >
-                  <CheckCircle2 className="w-6 h-6 text-yellow-400 flex-shrink-0 mt-1" strokeWidth={1.5} />
-                  <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'}`}>{item}</p>
-                </div>
-              ))}
-            </div>
-
-            <div 
-              id="promessa-box"
-              data-animate
-              className={`${theme === 'dark' ? 'bg-gray-800 border-gray-700' : 'bg-gray-50 border-gray-200'} p-8 rounded-lg border transform transition-colors ${
-                isVisible['promessa-box'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-              } duration-700 ease-out`}
-            >
-              <h3 className="text-2xl font-bold mb-6">Resultado</h3>
-              <div className="space-y-4">
-                <div className="border-l-4 border-yellow-400 pl-4">
-                  <p className="font-bold text-lg mb-1">Discurso Claro</p>
-                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Eleitorado entende exatamente o que você defende e por que você é necessário.</p>
-                </div>
-                <div className="border-l-4 border-yellow-400 pl-4">
-                  <p className="font-bold text-lg mb-1">Pauta Certa</p>
-                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Cada conteúdo reforça sua narrativa. Nada é aleatório.</p>
-                </div>
-                <div className="border-l-4 border-yellow-400 pl-4">
-                  <p className="font-bold text-lg mb-1">Constância</p>
-                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Presença diária em múltiplas plataformas. Você não desaparece.</p>
-                </div>
-                <div className="border-l-4 border-yellow-400 pl-4">
-                  <p className="font-bold text-lg mb-1">Autoridade Percebida</p>
-                  <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>Eleitorado vê você como referência. Confia em você. Vota em você.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ========== SERVICES SECTION ========== */}
       <section id="servicos" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'} transition-colors`}>
