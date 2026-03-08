@@ -311,55 +311,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== PROCESS SECTION ========== */}
-      <section id="metodo" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} relative transition-colors`}>
-        <div className="absolute left-0 bottom-0 w-1 h-32 bg-yellow-400"></div>
-        
-        <div className="container">
-          <h2 className="text-4xl md:text-5xl font-bold mb-16">Nosso processo</h2>
-
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {[
-              { num: "01", title: "Diagnóstico", desc: "Entendemos seu contexto, desafios, oportunidades, público" },
-              { num: "02", title: "Narrativa", desc: "Definimos bandeiras, inimigo, promessa. Discurso claro." },
-              { num: "03", title: "Calendário", desc: "Planejamos conteúdo estratégico." },
-              { num: "04", title: "Produção", desc: "Roteiro, captação, edição, design de impacto" },
-              { num: "05", title: "Distribuição", desc: "Lançamos em múltiplas plataformas, onde seu público está" },
-              { num: "06", title: "Otimização", desc: "Ajustamos conforme sinais do público, semanal" }
-            ].map((step, i) => (
-              <div 
-                key={i}
-                id={`processo-${i}`}
-                data-animate
-                className={`relative transform ${
-                  isVisible[`processo-${i}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                } duration-700 ease-out`}
-                style={{ transitionDelay: `${i * 50}ms` }}
-              >
-                <div className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-black'} text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl mb-4 transition-colors`}>
-                  {step.num}
-                </div>
-                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
-                <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>{step.desc}</p>
-                {i < 5 && <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-yellow-400"></div>}
-              </div>
-            ))}
-          </div>
-
-          <div 
-            id="processo-resultado"
-            data-animate
-            className={`bg-yellow-400 text-black p-8 rounded-lg transform ${
-              isVisible['processo-resultado'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-            } duration-700 ease-out`}
-          >
-            <p className="text-lg font-semibold">
-              🎯 Resultado: Seu candidato ou mandato com discurso claro, pauta certa, constância e autoridade. As pessoas te conhecem, se lembram de você e votam em você.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ========== ABOUT SECTION ========== */}
       <section id="sobre" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} transition-colors`}>
         <div className="container">
@@ -412,6 +363,55 @@ export default function Home() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== PROCESS SECTION ========== */}
+      <section id="metodo" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} relative transition-colors`}>
+        <div className="absolute left-0 bottom-0 w-1 h-32 bg-yellow-400"></div>
+        
+        <div className="container">
+          <h2 className="text-4xl md:text-5xl font-bold mb-16">Nosso processo</h2>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {[
+              { num: "01", title: "Diagnóstico", desc: "Entendemos seu contexto, desafios, oportunidades, público" },
+              { num: "02", title: "Narrativa", desc: "Definimos bandeiras, inimigo, promessa. Discurso claro." },
+              { num: "03", title: "Calendário", desc: "Planejamos conteúdo estratégico." },
+              { num: "04", title: "Produção", desc: "Roteiro, captação, edição, design de impacto" },
+              { num: "05", title: "Distribuição", desc: "Lançamos em múltiplas plataformas, onde seu público está" },
+              { num: "06", title: "Otimização", desc: "Ajustamos conforme sinais do público, semanal" }
+            ].map((step, i) => (
+              <div 
+                key={i}
+                id={`processo-${i}`}
+                data-animate
+                className={`relative transform ${
+                  isVisible[`processo-${i}`] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                } duration-700 ease-out`}
+                style={{ transitionDelay: `${i * 50}ms` }}
+              >
+                <div className={`${theme === 'dark' ? 'bg-gray-800' : 'bg-black'} text-white rounded-full w-16 h-16 flex items-center justify-center font-bold text-2xl mb-4 transition-colors`}>
+                  {step.num}
+                </div>
+                <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                <p className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>{step.desc}</p>
+                {i < 5 && <div className="hidden md:block absolute top-8 -right-4 w-8 h-0.5 bg-yellow-400"></div>}
+              </div>
+            ))}
+          </div>
+
+          <div 
+            id="processo-resultado"
+            data-animate
+            className={`bg-yellow-400 text-black p-8 rounded-lg transform ${
+              isVisible['processo-resultado'] ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            } duration-700 ease-out`}
+          >
+            <p className="text-lg font-semibold">
+              🎯 Resultado: Seu candidato ou mandato com discurso claro, pauta certa, constância e autoridade. As pessoas te conhecem, se lembram de você e votam em você.
+            </p>
           </div>
         </div>
       </section>
