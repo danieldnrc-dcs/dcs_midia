@@ -250,7 +250,7 @@ export default function Home() {
               } duration-700 ease-out`}
               style={{backgroundColor: '#121212'}}
             >
-              <h3 className="text-2xl font-bold mb-6 text-yellow-400">A gente faz diferente</h3>
+              <h3 className="text-2xl font-bold mb-6 text-yellow-400">Fazemos diferente</h3>
               <ul className={`space-y-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-300'}`}>
                 <li className="flex gap-3">
                   <span className="text-yellow-400 font-bold text-lg flex-shrink-0">→</span>
@@ -269,8 +269,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-
 
       {/* ========== SERVICES SECTION ========== */}
       <section id="servicos" className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-900' : 'bg-gray-50'} transition-colors`}>
@@ -329,7 +327,7 @@ export default function Home() {
                 className="w-48 h-48 md:w-full md:h-auto rounded-lg shadow-lg object-cover"
               />
               <div className="mt-4 md:mt-6 p-4 bg-yellow-400 text-black rounded-lg w-full max-w-xs md:max-w-none">
-                <p className="text-sm">Fundador da DCS Mídia. Especialista em estratégia de narrativa e comunicação política. 10+ anos de experiência em campanhas e mandatos.</p>
+                <p className="text-sm">Fundador da DCS Mídia. Especialista em estratégia digital e comunicação política. 10+ anos de experiência em campanhas e mandatos.</p>
               </div>
             </div>
 
@@ -341,9 +339,9 @@ export default function Home() {
                 isVisible['sobre-text'] ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
               } duration-700 ease-out`}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Quem sou:</h2>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Daniel Carvalho,</h2>
               <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-4 leading-relaxed`}>
-                <strong>Daniel Carvalho</strong> é consultor de marketing político e eleitoral, fundador da DCS Mídia. Atua há 10 anos no mercado de marketing, desenvolvendo estratégias e liderando projetos em campanhas municipais e estaduais, além de trabalhos contínuos com mandatos de vereador, deputado estadual e federal.
+                estrategista de marketing político digital, fundador da DCS Mídia. Atua há 10 anos no mercado de marketing, desenvolvendo estratégias e liderando projetos em campanhas municipais e estaduais, além de trabalhos contínuos com mandatos de vereador, deputado estadual e federal.
               </p>
               <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-700'} mb-4 leading-relaxed`}>
                 Seu foco está em comunicação digital, redes sociais e produção de conteúdo, sempre estruturando presença, narrativa e relação com o eleitor. Carrega experiência em marketing esportivo e jornalismo, o que amplia sua capacidade de entender público, construir marca e organizar comunicação de forma estratégica.
@@ -418,13 +416,6 @@ export default function Home() {
 
       {/* ========== CTA FINAL SECTION ========== */}
       <section className={`py-20 md:py-28 ${theme === 'dark' ? 'bg-gray-950' : 'bg-black'} text-white relative overflow-hidden transition-colors`}>
-        <div className="absolute inset-0 opacity-5">
-          <svg className="w-full h-full" viewBox="0 0 1200 400" preserveAspectRatio="none">
-            <line x1="0" y1="0" x2="1200" y2="400" stroke="white" strokeWidth="2" />
-            <line x1="0" y1="100" x2="1200" y2="500" stroke="white" strokeWidth="2" />
-          </svg>
-        </div>
-
         <div className="container relative z-10 text-center">
           <div 
             id="cta-final"
