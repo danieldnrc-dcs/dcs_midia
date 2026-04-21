@@ -1,0 +1,30 @@
+# 1. Push da branch
+git push -u origin feat/portfolio-page
+
+# 2. Abrir PR (instale gh CLI se não tiver: brew install gh && gh auth login)
+gh pr create \
+  --title "feat: nova página de portfólio com cases em vídeo" \
+  --body "$(cat <<'EOF'
+## Resumo
+
+- **Nova página `/portfolio`** com hero, filtros por categoria, grid de cases e CTA de conversão
+- **8 cases reais** da planilha (`dcs_portfolio_cases.xlsx`) — Milton Vieira e Sansão Pereira
+- **Modal de vídeo** com embed oficial via `react-social-media-embed` (Instagram/TikTok/YouTube)
+- **Header/Footer extraídos** para `SiteHeader.tsx` e `SiteFooter.tsx` — reutilizados em Home e Portfolio
+- **Link "Portfólio"** adicionado na nav e na coluna Empresa do footer
+- `pnpm build` passa sem erros de TypeScript
+
+## Checklist de QA
+
+- [ ] Todos os 8 cases com Instagram URL estão no grid
+- [ ] Filtros por categoria funcionam (Posicionamento, Campanha eleitoral)
+- [ ] Modal abre e fecha sem travar scroll
+- [ ] Vídeos carregam no embed do Instagram
+- [ ] Dark mode OK em todas as seções
+- [ ] Mobile 375px sem scroll horizontal
+- [ ] Link "Portfólio" aparece no header e no footer
+- [ ] `pnpm build` passa sem erros
+
+🤖 Generated with [Claude Code](https://claude.com/claude-code)
+EOF
+)"
