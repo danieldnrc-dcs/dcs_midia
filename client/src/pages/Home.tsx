@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { 
-  ArrowRight, 
-  MessageCircle, 
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
+import {
+  ArrowRight,
+  MessageCircle,
   Target,
   Radio,
   MessageSquare,
@@ -13,8 +15,6 @@ import {
   PenTool,
   Activity,
   Eye,
-  Moon,
-  Sun,
   BookOpen
 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -45,43 +45,11 @@ const useScrollAnimation = () => {
 
 export default function Home() {
   const isVisible = useScrollAnimation();
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'bg-gray-950 text-white' : 'bg-white text-black'}`}>
-      {/* ========== HEADER ========== */}
-      <header className={`sticky top-0 z-50 ${theme === 'dark' ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-b transition-colors`}>
-        <div className="container flex items-center justify-between py-4">
-          <div className="flex items-center gap-2">
-            <img 
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310419663028858232/4qqDDmhxZ4hQffQuMCJG7z/logo-dcs_cdd2c269.png" 
-              alt="DCS Mídia" 
-              className="h-12"
-            />
-          </div>
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#sobre" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Sobre</a>
-            <a href="#servicos" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Serviços</a>
-            <a href="#metodo" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Método</a>
-            <Link href="/blog" className={`text-sm font-medium ${theme === 'dark' ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-black'} transition`}>Blog</Link>
-          </nav>
-          <div className="flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-lg transition-colors ${theme === 'dark' ? 'bg-gray-800 hover:bg-gray-700 text-yellow-400' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'}`}
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun className="w-5 h-5" strokeWidth={1.5} /> : <Moon className="w-5 h-5" strokeWidth={1.5} />}
-            </button>
-            <a href="https://wa.me/message/SESMAH5FUNJRG1" target="_blank" rel="noopener noreferrer">
-              <Button className="bg-yellow-400 text-black hover:bg-yellow-500">
-                <MessageCircle className="w-4 h-4 mr-2" />
-                WhatsApp
-              </Button>
-            </a>
-          </div>
-        </div>
-      </header>
+      <SiteHeader />
 
       {/* ========== HERO SECTION ========== */}
       <section className="relative overflow-hidden bg-black text-white py-24 md:py-32">
@@ -424,39 +392,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== FOOTER ========== */}
-      <footer className="bg-gray-900 text-gray-400 py-12 border-t border-gray-800">
-        <div className="container">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <p className="font-bold text-white mb-4">DCS Mídia</p>
-            </div>
-            <div>
-              <p className="font-bold text-white mb-4">Serviços</p>
-              <ul className="text-sm space-y-2">
-                <li><a href="#servicos" className="hover:text-white transition">Estratégia</a></li>
-                <li><a href="#servicos" className="hover:text-white transition">Conteúdo</a></li>
-                <li><a href="#servicos" className="hover:text-white transition">Redes Sociais</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-bold text-white mb-4">Empresa</p>
-              <ul className="text-sm space-y-2">
-                <li><a href="#sobre" className="hover:text-white transition">Sobre</a></li>
-                <li><a href="#metodo" className="hover:text-white transition">Método</a></li>
-                <li><Link href="/blog" className="hover:text-white transition">Blog</Link></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-bold text-white mb-4">Contato</p>
-              <p className="text-sm">contato@dcsmidia.com</p>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 pt-8 text-center text-sm">
-            <p>&copy; 2026 DCS Mídia. Todos os direitos reservados. | Marketing direto ao ponto.</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }
