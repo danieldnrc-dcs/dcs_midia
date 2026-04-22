@@ -25,8 +25,8 @@ export default function CaseCard({ caseItem: c, onClick }: CaseCardProps) {
           : "bg-white border-gray-200 hover:border-yellow-400"
       } hover:shadow-lg`}
     >
-      {/* Thumbnail 9:16 */}
-      <div className="relative aspect-[9/16] bg-black overflow-hidden">
+      {/* Thumbnail 16:9 */}
+      <div className="relative aspect-video bg-black overflow-hidden">
         {c.thumb ? (
           <img
             src={c.thumb}

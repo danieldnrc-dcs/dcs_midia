@@ -68,7 +68,7 @@ export default function CaseVideoModal({
             )}
             {c.metricaSecundaria && (
               <p className="text-xs text-gray-400">{c.metricaSecundaria}</p>
-              )}
+            )}
           </div>
         )}
       </DialogContent>
